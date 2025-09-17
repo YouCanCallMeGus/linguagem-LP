@@ -36,6 +36,14 @@ digito               = "0".."9" ;
 
 ```
 
+#### Mais detalhes:
+comandos: 
+- velocidade x; (define a velocidade do carro para x)
+- inclinacao x; (define a inclinacao do carro para x)
+
+sensores de leitura:
+- tempo; (devolve o tempo atual da corrida em segundos)
+
 ### Exemplo de aplicação
 
 ```
