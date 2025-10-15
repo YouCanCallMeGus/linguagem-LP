@@ -44,19 +44,21 @@ sensores de leitura:
 ### Exemplo de aplicação
 
 ```
-existe i = 0;
-existe tempoMaximo = 3600;
-existe velocidadeMax = 30;
-existe inclinacaoMax = 14;
+existe i sendo 0;
+existe tempoMaximo sendo 3600;
+existe velocidadeMax sendo 30;
+existe inclinacaoMax sendo 14;
 
-dadoQue (tempo < tempoMaximo):
-    velocidade += 0.1;
-    inclinacaoAtual += 0.1;
+dadoQue (tempo < tempoMaximo) {
+    velocidade recebe velocidade + 0.1;
+    inclinacao recebe inclinacao + 0.1;
 
-    se (velocidade >= velocidadeMax) ->ent:
-        velocidade = velocidadeMax;
+    se velocidade >= velocidadeMax ->ent {
+        velocidade recebe velocidadeMax;
+    }
 
-    se (inclinacao >= inclinacaoMax) ->ent:
-        inclinacao = inclinacaoMax;
-
+    se inclinacao >= inclinacaoMax ->ent {
+        inclinacao recebe inclinacaoMax;
+    }
+}
 ```
