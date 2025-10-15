@@ -12,28 +12,25 @@ programa          = { comando } ;
 
 comando           = declaracao | atribuicao | condicional | enquanto | paraTodo ;
 
-declaracao        = "existe" identificador "=" expressao ";" ;
-atribuicao        = ("velocidade" | "inclinacao" | identificador) "=" expressao ";" ;
+declaracao        = "existe" identificador "sendo" expressao ";" ;
+atribuicao        = ("velocidade" | "inclinacao" | identificador) "recebe" expressao ";" ;
 
-condicional       = "se" "(" expressao ")" "->ent:" bloco ;
-enquanto          = "dadoQue" "(" expressao ")" ":" bloco ;
+condicional       = "se" expressao "->ent" bloco ;
+enquanto          = "dadoQue" "(" expressao ")" bloco ;
 
-paraTodo          = "paraTodo" "(" inicializacao ";" expressao ";" incremento ")" ":" bloco ;
-inicializacao     = identificador "=" expressao ;
-incremento        = identificador ("++" | "+=" expressao | "--" | "-=" expressao) ;
+paraTodo          = "paraTodo" identificador "de" expressao "ate" expressao ["passo" expressao] bloco ;
 
 bloco             = "{" { comando } "}" ;
 
 expressao         = termo { ("+" | "-" | "*" | "/" | "E" | "OU" | "<" | ">" | "<=" | ">=" | "==" | "!=") termo } ;
-termo              = numero | identificador | leitura | "(" expressao ")" ;
+termo             = numero | identificador | leitura | "(" expressao ")" ;
 
-leitura             = "tempo" | "velocidade" | "inclinacaoAtual" ;
+leitura           = "tempo" | "velocidade" | "inclinacaoAtual" ;
 
-identificador       = letra { letra | digito | "_" } ;
-numero               = digito { digito } ;
-letra                = "a".."z" | "A".."Z" ;
-digito               = "0".."9" ;
-
+identificador     = letra { letra | digito | "_" } ;
+numero            = digito { digito } ;
+letra             = "a".."z" | "A".."Z" ;
+digito            = "0".."9" ;
 ```
 
 #### Mais detalhes:
