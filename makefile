@@ -11,4 +11,11 @@ clean:
 	rm -f lex.yy.c parser.tab.c parser.tab.h
 	@echo "Arquivos de análise removidos"
 
-.PHONY: all clean
+example:
+	gcc -o lmd parser.tab.c lex.yy.c -lfl
+	@echo "lmd gerado!"
+
+test: lmd
+	./lmd < examples/$(ARQ)
+
+.PHONY: all clean example test
