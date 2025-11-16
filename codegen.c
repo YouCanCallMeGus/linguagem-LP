@@ -321,11 +321,7 @@ void codegen_halt(CodeGenerator* cg) {
     fprintf(cg->output, "HALT\n");
 }
 
-void codegen_compile_arithmetic(CodeGenerator* cg, const char* expr, const char* target_reg) {
-    DEBUG_MSG("codegen_compile_arithmetic CHAMADA!");
-    
-    fprintf(cg->output, "; 🔥 COMPILANDO: %s\n", expr);
-    
+void codegen_compile_arithmetic(CodeGenerator* cg, const char* expr, const char* target_reg) {    
     char expr_copy[256];
     strncpy(expr_copy, expr, 255);
     expr_copy[255] = '\0';
