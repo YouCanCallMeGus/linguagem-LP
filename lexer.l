@@ -4,57 +4,63 @@
 #include <string.h>
 %}
 
+%option noyywrap nodefault
+
+DIGITO    [0-9]
+LETRA     [a-zA-Z_]
+IDENT     {LETRA}({LETRA}|{DIGITO})*
+
 %%
 
-[ \t\n]                 ;
+[ \t\n]                 { /* ignora */ }
 
-"existe"               { return EXISTE; }
-"sendo"                { return SENDO; }
-"recebe"               { return RECEBE; }
-"velocidade"           { return VELOCIDADE; }
-"inclinacao"           { return INCLINACAO; }
-"se"                   { return SE; }
-"->ent"                { return ENTAO; }
-"dadoQue"              { return DADOQUE; }
-"paraTodo"             { return PARATODO; }
-"de"                   { return DE; }
-"ate"                  { return ATE; }
-"passo"                { return PASSO; }
-"tempo"                { return TEMPO; }
-"inclinacaoAtual"      { return INCLINACAOATUAL; }
-"E"                    { return E; }
-"OU"                   { return OU; }
+"existe"               { printf("TOKEN: EXISTE\n"); return EXISTE; }
+"sendo"                { printf("TOKEN: SENDO\n"); return SENDO; }
+"recebe"               { printf("TOKEN: RECEBE\n"); return RECEBE; }
+"velocidade"           { printf("TOKEN: VELOCIDADE\n"); return VELOCIDADE; }
+"inclinacao"           { printf("TOKEN: INCLINACAO\n"); return INCLINACAO; }
+"se"                   { printf("TOKEN: SE\n"); return SE; }
+"->ent"                { printf("TOKEN: ENTAO\n"); return ENTAO; }
+"dadoQue"              { printf("TOKEN: DADOQUE\n"); return DADOQUE; }
+"paraTodo"             { printf("TOKEN: PARATODO\n"); return PARATODO; }
+"de"                   { printf("TOKEN: DE\n"); return DE; }
+"ate"                  { printf("TOKEN: ATE\n"); return ATE; }
+"passo"                { printf("TOKEN: PASSO\n"); return PASSO; }
+"tempo"                { printf("TOKEN: TEMPO\n"); return TEMPO; }
+"E"                    { printf("TOKEN: E\n"); return E; }
+"OU"                   { printf("TOKEN: OU\n"); return OU; }
 
-"<="                   { return MENOR_IGUAL; }
-">="                   { return MAIOR_IGUAL; }
-"=="                   { return IGUAL; }
-"!="                   { return DIFERENTE; }
-"<"                    { return '<'; }
-">"                    { return '>'; }
-"+"                    { return '+'; }
-"-"                    { return '-'; }
-"*"                    { return '*'; }
-"/"                    { return '/'; }
-"("                    { return '('; }
-")"                    { return ')'; }
-"{"                    { return '{'; }
-"}"                    { return '}'; }
-";"                    { return ';'; }
+"<="                   { printf("TOKEN: MENOR_IGUAL\n"); return MENOR_IGUAL; }
+">="                   { printf("TOKEN: MAIOR_IGUAL\n"); return MAIOR_IGUAL; }
+"=="                   { printf("TOKEN: IGUAL\n"); return IGUAL; }
+"!="                   { printf("TOKEN: DIFERENTE\n"); return DIFERENTE; }
+"<"                    { printf("TOKEN: <\n"); return '<'; }
+">"                    { printf("TOKEN: >\n"); return '>'; }
+"+"                    { printf("TOKEN: +\n"); return '+'; }
+"-"                    { printf("TOKEN: -\n"); return '-'; }
+"*"                    { printf("TOKEN: *\n"); return '*'; }
+"/"                    { printf("TOKEN: /\n"); return '/'; }
+"("                    { printf("TOKEN: (\n"); return '('; }
+")"                    { printf("TOKEN: )\n"); return ')'; }
+"{"                    { printf("TOKEN: {\n"); return '{'; }
+"}"                    { printf("TOKEN: }\n"); return '}'; }
+";"                    { printf("TOKEN: ;\n"); return ';'; }
 
-[a-zA-Z_][a-zA-Z0-9_]* { 
+{IDENT}               { 
+    printf("TOKEN: IDENTIFICADOR '%s'\n", yytext);
     yylval.string = strdup(yytext);
     return IDENTIFICADOR; 
 }
 
-[0-9]+                 {
+{DIGITO}+             {
+    printf("TOKEN: NUMERO '%s'\n", yytext);
     yylval.number = atoi(yytext);
     return NUMERO;
 }
 
-.                      { return yytext[0]; }
+.                     { 
+    printf("TOKEN INVALIDO: '%c'\n", yytext[0]); 
+    return yytext[0]; 
+}
 
 %%
-
-int yywrap() {
-    return 1;
-}

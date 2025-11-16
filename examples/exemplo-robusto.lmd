@@ -1,0 +1,17 @@
+existe i sendo 0;
+existe tempoMaximo sendo 50;
+existe velocidadeMax sendo 30;
+existe inclinacaoMax sendo 14;
+
+dadoQue (tempo < tempoMaximo) {
+    velocidade recebe velocidade + 10;
+    inclinacao recebe inclinacao + 10;
+
+    se velocidade >= velocidadeMax ->ent {
+        velocidade recebe velocidadeMax;
+    }
+
+    se inclinacao >= inclinacaoMax ->ent {
+        inclinacao recebe inclinacaoMax;
+    }
+}

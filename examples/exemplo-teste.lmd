@@ -1,0 +1,16 @@
+existe x sendo 5;
+velocidade recebe 0;
+inclinacao recebe 2;
+tempo recebe 5;
+
+se velocidade > 5 ->ent {
+    inclinacao recebe 5;
+}
+
+dadoQue (tempo > 5) {
+    tempo recebe tempo - 1;
+}
+
+paraTodo i de 1 ate 3 passo 1{
+    velocidade recebe velocidade + 1;
+}

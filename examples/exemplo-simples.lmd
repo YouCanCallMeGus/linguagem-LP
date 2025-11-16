@@ -1,0 +1,7 @@
+existe i sendo 0;
+existe max sendo 3;
+
+dadoQue (i < max) {
+    velocidade recebe i;
+    i recebe i + 1;
+}

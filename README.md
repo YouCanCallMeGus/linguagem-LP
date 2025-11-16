@@ -25,7 +25,7 @@ bloco             = "{" { comando } "}" ;
 expressao         = termo { ("+" | "-" | "*" | "/" | "E" | "OU" | "<" | ">" | "<=" | ">=" | "==" | "!=") termo } ;
 termo             = numero | identificador | leitura | "(" expressao ")" ;
 
-leitura           = "tempo" | "velocidade" | "inclinacaoAtual" ;
+leitura           = "tempo" | "velocidade" | "inclinacao" ;
 
 identificador     = letra { letra | digito | "_" } ;
 numero            = digito { digito } ;
@@ -62,3 +62,13 @@ dadoQue (tempo < tempoMaximo) {
     }
 }
 ```
+
+# Rodando a linguagem com a VM:
+```cmd
+make clean
+make
+./compilador {arquivo.lmd} programa.asm
+python3 TreadmillVM.py programa.asm
+```
+
+Existem alguns exemplos de aplicações da máquina na pasta examples.

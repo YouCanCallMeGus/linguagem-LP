@@ -9,6 +9,6 @@ paraTodo i de 0 ate 10 passo 1 {
     velocidade recebe velocidade + 1;
 }
 
-dadoQue (velocidade > 0 E inclinacaoAtual < 30) {
+dadoQue (velocidade > 0 E inclinacao < 30) {
     x recebe x + 1;
 }
