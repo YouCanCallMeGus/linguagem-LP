@@ -217,11 +217,11 @@ class EsteiraVM:
             # === CONTROLE DE ESTEIRA ===
             elif op == "INICIAR":
                 self.running = True
-                print("🏃 Esteira INICIADA")
+                print("Esteira INICIADA")
                 self.pc += 1
             elif op == "PARAR":
                 self.running = False
-                print("🛑 Esteira PARADA")
+                print("Esteira PARADA")
                 self.pc += 1
             elif op == "STATUS":
                 self.print_status()
@@ -229,7 +229,7 @@ class EsteiraVM:
             elif op == "HALT":
                 self.running = False
                 self.halted = True
-                print("⏹️ Programa FINALIZADO")
+                print("Programa FINALIZADO")
             
             else:
                 raise ValueError(f"Instrução não implementada: {op}")
@@ -407,7 +407,7 @@ class EsteiraVM:
 
     def print_status(self):
         """Mostra status atual da esteira"""
-        status = "✅ LIGADA" if self.running else "❌ PARADA"
+        status = "LIGADA" if self.running else "PARADA"
         print(f"\n--- STATUS ESTEIRA ---")
         print(f"Estado: {status}")
         print(f"Velocidade: {self.registers['VELOCIDADE']/10} km/h")
@@ -423,7 +423,7 @@ class EsteiraVM:
 
     def run(self, max_steps: Optional[int] = 1000):
         """Executa o programa"""
-        print("🚀 Iniciando execução da EsteiraVM...")
+        print("Iniciando execução da EsteiraVM...")
         while not self.halted:
             if max_steps and self.steps >= max_steps:
                 raise RuntimeError(f"Limite de {max_steps} steps atingido!")
@@ -507,7 +507,7 @@ def test_vm():
     vm.run()
     
     print("\n" + "="*50)
-    print("🧪 Testando sensores...")
+    print("Testando sensores...")
     vm2 = EsteiraVM()
     vm2.load_program(sensor_test)
     vm2.run()
@@ -518,26 +518,26 @@ def load_and_run_asm_file(filename: str, max_steps: int = 1000):
         with open(filename, 'r') as f:
             asm_code = f.read()
         
-        print(f"📁 Carregando programa: {filename}")
+        print(f"Carregando programa: {filename}")
         print("=" * 50)
         
         vm = EsteiraVM()
         vm.load_program(asm_code)
         
-        print("✅ Programa carregado com sucesso!")
-        print(f"📊 Número de instruções: {len(vm.program)}")
-        print(f"🏷️  Labels encontrados: {list(vm.labels.keys())}")
+        print("Programa carregado com sucesso!")
+        print(f"Número de instruções: {len(vm.program)}")
+        print(f"Labels encontrados: {list(vm.labels.keys())}")
         print("=" * 50)
         
         vm.run(max_steps)
         
-        print("\n🎯 Execução finalizada!")
+        print("\nExecução finalizada!")
         vm.print_status()
         
     except FileNotFoundError:
-        print(f"❌ Arquivo não encontrado: {filename}")
+        print(f"Arquivo não encontrado: {filename}")
     except Exception as e:
-        print(f"❌ Erro durante execução: {e}")
+        print(f"Erro durante execução: {e}")
 
 def main():
     import sys
@@ -547,9 +547,9 @@ def main():
         if filename.endswith('.asm'):
             load_and_run_asm_file(filename)
         else:
-            print("❌ Por favor, forneça um arquivo .asm")
+            print("Por favor, forneça um arquivo .asm")
     elif len(sys.argv) == 1:
-        print("🧪 Executando testes internos...")
+        print("Executando testes internos...")
         test_vm()
     else:
         print("Uso: python TreadmillVM.py [arquivo.asm]")
